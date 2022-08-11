@@ -1,6 +1,6 @@
 {% set name = "opentelemetry-semantic-conventions" %}
 {% set version = "0.33b0" %}
-
+{% set sha256 = "67d62461c87b683b958428ced79162ec4d567dabf30b050f270bbd01eff89ced" %}
 
 package:
   name: {{ name|lower }}
@@ -8,19 +8,20 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-semantic-conventions-{{ version }}.tar.gz
-  sha256: 67d62461c87b683b958428ced79162ec4d567dabf30b050f270bbd01eff89ced
+  sha256: {{ sha256 }}
 
 build:
   number: 0
-  noarch: python
+  skip: true  # [py<36]
+  # noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
   run:
-    - python >=3.6
+    - python
 
 test:
   imports:
@@ -33,9 +34,13 @@ test:
 
 about:
   home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  summary: OpenTelemetry Semantic Conventions
   license: Apache-2.0
+  license_family: Apache
   license_file: LICENSE
+  summary: OpenTelemetry Semantic Conventions
+  description: |-
+    This library contains generated code for the semantic conventions
+    defined by the OpenTelemetry specification.
 
 extra:
   recipe-maintainers:
