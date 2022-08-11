@@ -35,12 +35,13 @@ test:
     - pip
 
 about:
+  summary: OpenTelemetry Python / Semantic Conventions
   home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  summary: OpenTelemetry Semantic Conventions
-  doc_url: https://opentelemetry.io
+  doc_url: https://opentelemetry-python.readthedocs.io/en/latest/
+  doc_source_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
   description: |-
     OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
     Observability framework for instrumenting, generating, collecting, and exporting
