@@ -14,12 +14,14 @@ build:
   number: 0
   skip: true  # [py<36]
   # noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
     - pip
     - python
+    - setuptools
+    - wheel
   run:
     - python
 
@@ -33,14 +35,18 @@ test:
     - pip
 
 about:
+  summary: OpenTelemetry Python / Semantic Conventions
   home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  summary: OpenTelemetry Semantic Conventions
+  doc_url: https://opentelemetry-python.readthedocs.io/en/latest/
+  doc_source_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
   description: |-
-    This library contains generated code for the semantic conventions
-    defined by the OpenTelemetry specification.
+    OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
+    Observability framework for instrumenting, generating, collecting, and exporting
+    telemetry data such as traces, metrics, logs. As an industry-standard
+    it is natively supported by a number of vendors.
 
 extra:
   recipe-maintainers:
