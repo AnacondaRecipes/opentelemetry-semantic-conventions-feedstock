@@ -20,7 +20,6 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
     - wheel
     - hatchling
   run:
