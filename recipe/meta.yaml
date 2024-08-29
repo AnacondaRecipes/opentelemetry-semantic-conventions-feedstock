@@ -1,32 +1,29 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.47b0" %}
+{% set version = "0.33b0" %}
+{% set sha256 = "67d62461c87b683b958428ced79162ec4d567dabf30b050f270bbd01eff89ced" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: a8d57999bbe3495ffd4d510de26a97dadc1dace53e0275001b2c1b2f67992a7e
-  patches:
-    # added to avoid pip._internal.exceptions.MetadataGenerationFailed: metadata generation failed
-    - patches/0000-fix-classifier-clash-in-pyproject.patch
-
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-semantic-conventions-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   number: 0
-  skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<36]
+  # noarch: python
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
     - pip
     - python
-    - hatchling
+    - setuptools
+    - wheel
   run:
     - python
-    - opentelemetry-api ==1.26.0
-    - Deprecated >=1.2.6
 
 test:
   imports:
@@ -38,18 +35,18 @@ test:
     - pip
 
 about:
+  home: https://github.com/open-telemetry/opentelemetry-python
   summary: OpenTelemetry Python / Semantic Conventions
-  home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  license: Apache-2.0
-  license_family: Apache
-  license_file: LICENSE
-  doc_url: https://opentelemetry-python.readthedocs.io/en/latest/
-  doc_source_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
-  description: |-
+  description: |
     OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
     Observability framework for instrumenting, generating, collecting, and exporting
     telemetry data such as traces, metrics, logs. As an industry-standard
     it is natively supported by a number of vendors.
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  doc_url: https://opentelemetry-python.readthedocs.io
+  dev_url: https://github.com/open-telemetry/opentelemetry-python
 
 extra:
   recipe-maintainers:
