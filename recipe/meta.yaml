@@ -48,7 +48,6 @@ about:
   license_file: LICENSE
   doc_url: https://opentelemetry-python.readthedocs.io/en/latest/
   dev_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  doc_source_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
   description: |-
     OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
     Observability framework for instrumenting, generating, collecting, and exporting
