@@ -19,6 +19,9 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
+  build:
+    - patch # [not win]
+    - m2-patch  # [win]
   host:
     - pip
     - python
@@ -44,6 +47,7 @@ about:
   license_family: Apache
   license_file: LICENSE
   doc_url: https://opentelemetry-python.readthedocs.io/en/latest/
+  dev_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
   doc_source_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
   description: |-
     OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
@@ -52,5 +56,7 @@ about:
     it is natively supported by a number of vendors.
 
 extra:
+  skip-lints:
+    - invalid_url
   recipe-maintainers:
     - mariusvniekerk
