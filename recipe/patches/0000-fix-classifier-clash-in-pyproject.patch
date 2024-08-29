@@ -1,0 +1,10 @@
+--- pyproject.toml	2024-08-27 12:14:39.373221382 +0100
++++ "pyproject copy.toml"	2024-08-27 12:15:59.915901289 +0100
+@@ -14,7 +14,6 @@
+ ]
+ classifiers = [
+   "Development Status :: 5 - Production/Stable",
+-  "Framework :: OpenTelemetry",
+   "Intended Audience :: Developers",
+   "License :: OSI Approved :: Apache Software License",
+   "Programming Language :: Python",
