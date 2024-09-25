@@ -19,6 +19,7 @@ requirements:
     - python >=3.8
     - hatchling
     - pip
+    - wheel
   run:
     - python >=3.8
     - opentelemetry-api ==1.26.0
