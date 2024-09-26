@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.47b0" %}
+{% set version = "0.48b0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,29 +7,22 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: a8d57999bbe3495ffd4d510de26a97dadc1dace53e0275001b2c1b2f67992a7e
-  patches:
-    # added to avoid pip._internal.exceptions.MetadataGenerationFailed: metadata generation failed
-    - patches/0000-fix-classifier-clash-in-pyproject.patch
-
+  sha256: 12d74983783b6878162208be57c9effcb89dc88691c64992d70bb89dc00daa1a
 
 build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
-  build:
-    - patch # [not win]
-    - m2-patch  # [win]
   host:
-    - pip
-    - python
+    - python >=3.8
     - hatchling
+    - pip
+    - wheel
   run:
-    - python
-    - opentelemetry-api ==1.26.0
-    - deprecated >=1.2.6
+    - python >=3.8
+    - opentelemetry-api ==1.27.0
 
 test:
   imports:
@@ -41,21 +34,20 @@ test:
     - pip
 
 about:
-  summary: OpenTelemetry Python / Semantic Conventions
   home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
+  summary: OpenTelemetry Semantic Conventions
   license: Apache-2.0
-  license_family: Apache
   license_file: LICENSE
-  doc_url: https://opentelemetry-python.readthedocs.io/
   dev_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  description: |-
-    OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
-    Observability framework for instrumenting, generating, collecting, and exporting
-    telemetry data such as traces, metrics, logs. As an industry-standard
-    it is natively supported by a number of vendors.
+  doc_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
 
 extra:
-  skip-lints:
-    - invalid_url
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/49522
+    reason: Dependency for chainlit
   recipe-maintainers:
+    - ianaobi
+  recipe-maintainers:
+    - rxm7706
     - mariusvniekerk
+    - conda-forge/opentelemetry-api
