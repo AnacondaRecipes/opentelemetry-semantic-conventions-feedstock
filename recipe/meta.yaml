@@ -22,7 +22,7 @@ requirements:
     - wheel
   run:
     - python >=3.8
-    - opentelemetry-api ==1.26.0
+    - opentelemetry-api ==1.27.0
 
 test:
   imports:
