@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.47b0" %}
+{% set version = "0.51b0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: a8d57999bbe3495ffd4d510de26a97dadc1dace53e0275001b2c1b2f67992a7e
-  patches:
-    # added to avoid pip._internal.exceptions.MetadataGenerationFailed: metadata generation failed
-    - patches/0000-fix-classifier-clash-in-pyproject.patch
+  sha256: 3fabf47f35d1fd9aebcdca7e6802d86bd5ebc3bc3408b7e3248dde6e87a18c47
 
 
 build:
@@ -19,16 +16,13 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
-  build:
-    - patch # [not win]
-    - m2-patch  # [win]
   host:
     - pip
     - python
     - hatchling
   run:
     - python
-    - opentelemetry-api ==1.26.0
+    - opentelemetry-api ==1.30.0
     - deprecated >=1.2.6
 
 test:
