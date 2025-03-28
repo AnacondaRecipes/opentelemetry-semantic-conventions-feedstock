@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.48b0" %}
+{% set version = "0.36b0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: 12d74983783b6878162208be57c9effcb89dc88691c64992d70bb89dc00daa1a
+  sha256: 829dc221795467d98b773c04096e29be038d77526dc8d6ac76f546fb6279bf01
 
 build:
   noarch: python
@@ -16,18 +16,16 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python >=3.7
     - hatchling
     - pip
-    - wheel
   run:
-    - python >=3.8
-    - opentelemetry-api ==1.27.0
+    - python >=3.7
+
 
 test:
   imports:
-    - opentelemetry
-    - opentelemetry.semconv
+    - opentelemetry_semantic_conventions
   commands:
     - pip check
   requires:
@@ -38,16 +36,10 @@ about:
   summary: OpenTelemetry Semantic Conventions
   license: Apache-2.0
   license_file: LICENSE
-  dev_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  doc_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs
 
 extra:
   anaconda-services:
-    ref: https://anaconda.zendesk.com/agent/tickets/49522
-    reason: Dependency for chainlit
+    ref: https://anaconda.zendesk.com/agent/tickets/70829
+    reason: Dependency for chromadb
   recipe-maintainers:
     - ianaobi
-  recipe-maintainers:
-    - rxm7706
-    - mariusvniekerk
-    - conda-forge/opentelemetry-api
