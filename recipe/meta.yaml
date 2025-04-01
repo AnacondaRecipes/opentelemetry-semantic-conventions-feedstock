@@ -1,13 +1,13 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.36b0" %}
+{% set version = "0.52b1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: 829dc221795467d98b773c04096e29be038d77526dc8d6ac76f546fb6279bf01
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
+  sha256: 7b3d226ecf7523c27499758a58b542b48a0ac8d12be03c0488ff8ec60c5bae5d
 
 build:
   noarch: python
@@ -16,19 +16,22 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - hatchling
     - pip
   run:
-    - python >=3.7
-
+    - python
+    - opentelemetry-api ==1.31.1
+    - deprecated >=1.2.6
 
 test:
   imports:
-    - opentelemetry_semantic_conventions
+    - opentelemetry
+    - opentelemetry.semconv
   commands:
     - pip check
   requires:
+    - python
     - pip
 
 about:
@@ -43,3 +46,7 @@ extra:
     reason: Dependency for chromadb
   recipe-maintainers:
     - ianaobi
+  recipe-maintainers:
+    - rxm7706
+    - mariusvniekerk
+    - conda-forge/opentelemetry-api
