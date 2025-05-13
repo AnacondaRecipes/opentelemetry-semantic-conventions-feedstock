@@ -46,7 +46,6 @@ extra:
     reason: Dependency for chromadb
   recipe-maintainers:
     - ianaobi
-    - bkreider
   recipe-maintainers:
     - rxm7706
     - mariusvniekerk
