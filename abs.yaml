@@ -1,3 +1,12 @@
-build_env_vars:
-  ANACONDA_ROCKET_ENABLE_PY313 : yes
 
+aggregate_check: false
+
+upload_without_merge: true
+
+content_signing: {'win-64': False}
+
+upload_channels:
+  - services
+
+channels:
+  - services

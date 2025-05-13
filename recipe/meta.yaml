@@ -1,28 +1,29 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.51b0" %}
+{% set version = "0.52b0" %}
+
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
-  sha256: 3fabf47f35d1fd9aebcdca7e6802d86bd5ebc3bc3408b7e3248dde6e87a18c47
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_semantic_conventions-{{ version }}.tar.gz
+  sha256: f8bc8873a69d0a2f45746c31980baad2bb10ccee16b1816497ccf99417770386
 
 
 build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - pip
     - python
     - hatchling
+    - pip
   run:
     - python
-    - opentelemetry-api ==1.30.0
+    - opentelemetry-api ==1.31.0
     - deprecated >=1.2.6
 
 test:
@@ -32,24 +33,22 @@ test:
   commands:
     - pip check
   requires:
+    - python
     - pip
 
 about:
-  summary: OpenTelemetry Python / Semantic Conventions
   home: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
+  summary: OpenTelemetry Semantic Conventions
   license: Apache-2.0
-  license_family: Apache
   license_file: LICENSE
-  doc_url: https://opentelemetry-python.readthedocs.io/
-  dev_url: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
-  description: |-
-    OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
-    Observability framework for instrumenting, generating, collecting, and exporting
-    telemetry data such as traces, metrics, logs. As an industry-standard
-    it is natively supported by a number of vendors.
 
 extra:
-  skip-lints:
-    - invalid_url
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/70829
+    reason: Dependency for chromadb
   recipe-maintainers:
+    - ianaobi
+  recipe-maintainers:
+    - rxm7706
     - mariusvniekerk
+    - conda-forge/opentelemetry-api
