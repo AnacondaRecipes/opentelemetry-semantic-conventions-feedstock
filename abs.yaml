@@ -1,4 +1,0 @@
-staging_channel_upload_target: otel-1.40.0-staging
-
-channels:
-  - https://staging.continuum.io/pbp/otel-1.40.0-staging
