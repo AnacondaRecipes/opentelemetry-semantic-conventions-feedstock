@@ -1,2 +1,4 @@
-build_env_vars:
-  ANACONDA_ROCKET_ENABLE_PY314 : yes
+staging_channel_upload_target: otel-1.40.0-staging
+
+channels:
+  - https://staging.continuum.io/pbp/otel-1.40.0-staging
