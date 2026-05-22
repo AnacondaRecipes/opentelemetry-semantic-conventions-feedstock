@@ -18,12 +18,10 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools <81
     - wheel
   run:
     - python
-  run_constrained:
-    # pkg_resources is used
     - setuptools <81
 
 test:
