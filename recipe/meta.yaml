@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-semantic-conventions" %}
-{% set version = "0.66b1" %}
+{% set version = "0.64b0" %}
 
 package:
   name: {{ name }}
@@ -27,7 +27,7 @@ requirements:
     - hatchling
   run:
     - python
-    - opentelemetry-api ==1.45.1
+    - opentelemetry-api ==1.43.0
     - typing-extensions >=4.5.0
 
 test:
